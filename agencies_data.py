@@ -1,6 +1,7 @@
 import requests
 import json
 
+res=requests.get("https://auditcity.io/api/data/e7eba98ba5b85dbc98b8def5319ef4c3")
 
 def read_json_file(data):
     try:
