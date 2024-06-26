@@ -2,6 +2,19 @@ import requests
 import json
 
 res=requests.get("https://auditcity.io/api/data/e7eba98ba5b85dbc98b8def5319ef4c3")
+class MyClass:
+    def __init__(self):
+        self.data = None
+
+    def get_request(self):
+        self.data = "Data fetched from request"
+        print("Request executed")
+
+    def process_data(self):
+        if self.data:
+            print("Processing data:", self.data)
+        else:
+            print("No data to process")
 
 def read_json_file(data):
     try:
@@ -28,3 +41,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    instance = MyClass()
+    instance.get_request()
+    instance.process_data()
