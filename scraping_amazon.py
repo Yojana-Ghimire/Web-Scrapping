@@ -9,3 +9,17 @@ Headers = ({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 #HTTP request
 webpage=requests.get(url,headers=Headers)
 print(webpage)
+
+print(type(webpage.content))
+
+#Converting bytes into html format
+
+soup=BeautifulSoup(webpage.content, 'html.parser')
+
+#Fetch links as list of Tag objects
+links = soup.find_all("a",attrs={'class':'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'})
+link=links[0].get('href')
+product_list="https://amazon.com"+link
+
+new_webpage = requests.get(product_list,headers=Headers)
+print(new_webpage)
