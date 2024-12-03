@@ -22,4 +22,8 @@ link=links[0].get('href')
 product_list="https://amazon.com"+link
 
 new_webpage = requests.get(product_list,headers=Headers)
-print(new_webpage)
+
+#Soup object containing all data
+new_soup=BeautifulSoup(new_webpage.content, 'html.parser')
+
+print(new_soup.find('span',attrs={"id":"productTitle"}).text.strip())
