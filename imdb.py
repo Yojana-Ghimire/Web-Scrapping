@@ -10,5 +10,9 @@ webpage=requests.get(url,headers=Headers)
 soup=BeautifulSoup(webpage.content,'html.parser')
 title=soup.find('h3',class_='ipc-title__text').text
 print(title)
-rating=soup.find('span',class_='ipc-rating-star--rating').text
+rating=soup.find('span',attrs={'class':'ipc-rating-star--rating'}).text
 print(rating)
+release = soup.find('span',class_='sc-300a8231-7 eaXxft dli-title-metadata-item').text
+print(release)
+no_of_rating= soup.find('span',class_='ipc-rating-star--voteCount').text
+print(no_of_rating)
