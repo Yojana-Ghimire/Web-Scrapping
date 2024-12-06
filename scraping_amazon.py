@@ -20,10 +20,19 @@ soup=BeautifulSoup(webpage.content, 'html.parser')
 links = soup.find_all("a",attrs={'class':'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'})
 link=links[0].get('href')
 product_list="https://amazon.com"+link
-
+print(product_list)
 new_webpage = requests.get(product_list,headers=Headers)
 
 #Soup object containing all data
 new_soup=BeautifulSoup(new_webpage.content, 'html.parser')
+new_soup.find('span',attrs={"id":"productTitle"}).text.strip()
 
-print(new_soup.find('span',attrs={"id":"productTitle"}).text.strip())
+#find total number of ratings
+num_of_rating=new_soup.find('span',attrs={"id":'acrCustomerReviewText'}).text
+
+#rating
+ratings=new_soup.find('span',attrs='a-size-base a-color-base').text
+print(ratings)
+
+
+
