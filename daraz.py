@@ -33,7 +33,6 @@ finally:
     driver.quit()
     
 #Transform the data
-
 import re
 
 products=[]   
